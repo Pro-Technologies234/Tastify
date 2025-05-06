@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% include "partial/navbar.html" %}
+<section>
+  <div class="w-full my-20 py-8 text-white">
+    <h1 class=" text-5xl font-bold text-center">Our Services</h1>
+    <ul class="mt-4 list-disc flex flex-col gap-2 list-inside text-white">
+      <li
+        class="p-5 w-full h-auto border-y-[.1rem] border-amber-500 border-dashed grid grid-cols-[1rem_30rem] justify-between px-5"
+      >
+        <div><h1>1.</h1></div>
+        <div>
+          <h2 class="text-3xl text-amber-500 font-bold">Easy Food Ordering:</h2>
+          Browse through a curated list of top-rated restaurants, explore diverse cuisines, and customize your order exactly how you like it. Our platform is designed to make your ordering experience fast, intuitive, and hassle-free — whether you're craving a quick snack or planning a family feast.
+        </div>
+      </li>
+      <li
+        class="p-5 w-full h-auto border-y-[.1rem] border-amber-500 border-dashed grid grid-cols-[1rem_30rem] justify-between px-5"
+      >
+        <div><h1>2.</h1></div>
+        <div>
+          <h2 class="text-3xl text-amber-500 font-bold">Fast Delivery:</h2>
+          Our network of trusted delivery partners ensures your food arrives hot, fresh, and on time. Whether you're ordering lunch during a busy workday or dinner on a relaxing weekend, we make sure you spend less time waiting and more time enjoying your meal.
+        </div>
+      </li>
+      <li
+        class="p-5 w-full h-auto border-y-[.1rem] border-amber-500 border-dashed grid grid-cols-[1rem_30rem] justify-between px-5"
+      >
+        <div><h1>3.</h1></div>
+        <div>
+          <h2 class="text-3xl text-amber-500 font-bold">Real-Time Tracking:</h2>
+          Know exactly when your order is being prepared, picked up, and on its way to you. Our live tracking system provides real-time updates, so you’re never left wondering where your food is — giving you peace of mind and full control of your time.
+        </div>
+      </li>
+      <li
+        class="p-5 w-full h-auto border-y-[.1rem] border-amber-500 border-dashed grid grid-cols-[1rem_30rem] justify-between px-5"
+      >
+        <div><h1>4.</h1></div>
+        <div>
+          <h2 class="text-3xl text-amber-500 font-bold">Secure Payments:</h2>
+          Pay the way that works best for you. Tastify supports a range of secure payment options including debit/credit cards, mobile money services, and even cash on delivery. Every transaction is encrypted and protected to ensure your personal information is safe.
+        </div>
+      </li>
+      <li
+        class="p-5 w-full h-auto border-y-[.1rem] border-amber-500 border-dashed grid grid-cols-[1rem_30rem] justify-between px-5"
+      >
+        <div><h1>5.</h1></div>
+        <div>
+          <h2 class="text-3xl text-amber-500 font-bold">Exclusive Deals & Discounts:</h2>
+          Get the most value for your money with daily specials, first-time user discounts, referral bonuses, and loyalty rewards. At Tastify, we make your favorite meals even more satisfying by helping you save with every order.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+{% include "partial/footer.html" %}
+{% endblock %}

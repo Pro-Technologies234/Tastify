@@ -1,0 +1,160 @@
+{% extends 'base.html' %} 
+{% block content %}
+{% include "partials/header.html" %}
+<section>
+  <main class="w-full px-20 mt-20" >
+    <div class="grid grid-cols-2" >  
+        <div>
+            <p class="text-amber-600 text-lg italic" >Tastify Delivering happiness to your doorstep!</p>
+            <h1 class="text-[4.5rem] leading-tight text-amber-500">
+            Quick <span class="text-black" >and</span> Easy<span class="text-black" > Food Delivery</span>
+            </h1>
+            <p class="mt-2" >
+            Tastify: Your go-to platform for quick and reliable food ordering. <br>
+            Satisfy your cravings with just a few clicks!
+            </p>
+            <div class="flex gap-10 mt-5" >
+              <a href="#" class="bg-amber-500  rounded-full px-8 py-2" >
+                Get Started
+              </a>
+            </div>
+        </div>
+        <div class="flex  justify-center " >
+          <div class="flex flex-col float-right" >
+            <div class="flex items-center gap-5 justify-between " >
+              <div>
+                <button class="bg-black p-4 cursor-pointer text-white rounded-full" >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                  </svg>
+                  
+                </button>
+              </div>
+              <div class="overflow-hidden h-80 animate-bounce-slow" >
+                <img src='/static/images/burger.png' alt="burger.png" class="w-[23rem] object-cover ">
+                <style>
+                  @keyframes bounce-slow {
+                  0%, 100% {
+                    transform: translateY(20px);
+                  }
+                  50% {
+                    transform: translateY(-20px);
+                  }
+                  }
+                  .animate-bounce-slow {
+                  animation: bounce-slow 5s infinite;
+                  }
+                </style>
+              </div>
+              <div>
+                <button class="bg-black p-4 cursor-pointer text-white rounded-full" >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
+                </button>
+              </div>
+              </div>
+            </div>
+        </div>
+      
+    </div>
+    <div class="grid grid-cols-2  mt-20 " >  
+      <div class="flex  justify-center " >
+        <div class="overflow-hidden float-left" >
+          <img src='/static/images/delivery-bike.png' alt="burger.png" class="w-[23rem] object-cover ">
+        </div>
+      </div>
+      <div class="pt-20 px10" >
+        <div class="shadow border-x border-b border-gray-300 p-5 rounded-2xl" >
+          <h1 class="text-4xl font-bold" ><span class="text-amber-500" >Fast</span> Delivery, <span class="text-amber-500" >Fresh</span> Taste</h1>
+          <p class="text-xl my-4 font-extralight" >We partner with the best restaurants and delivery professionals 
+            to make sure your food arrives hot, fresh, and fast — every time.
+          </p>
+          <a href="/" class="underline hover:text-amber-700 italic flex gap-5">
+            Discover Your Favorite Meals
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-2  mt-20 " >  
+      <div class="pt-20 px10" >
+        <div class=" flex flex-col gap-4 " >
+          <h1 class="text-4xl font-bold" >Why Choose us<span class="text-amber-500 text-6xl" > ?</span>  </h1>
+          <div class="flex gap-5 items-center" >
+            <div  >
+              <div class="p-3 rounded-full shadow-lg shadow-amber-500 text-white bg-amber-400">
+                <i data-lucide="utensils" ></i>
+              </div>
+            </div>
+            <h2 class="text-2xl" >Wide range of cuisines</h2>
+          </div>
+          <div class="flex gap-5 items-center" >
+            <div  >
+              <div class="p-3 rounded-full shadow-lg shadow-amber-500 text-white bg-amber-400">
+                <i data-lucide="locate-fixed" ></i>
+              </div>
+            </div>
+            <h2 class="text-2xl" >Real-time order tracking</h2>
+          </div>
+          <div class="flex gap-5 items-center" >
+            <div  >
+              <div class="p-3 rounded-full shadow-lg shadow-amber-500 text-white bg-amber-400">
+                <i data-lucide="credit-card" ></i>
+              </div>
+            </div>
+            <h2 class="text-2xl" >Secure & fast payments</h2>
+          </div>
+          <div class="flex gap-5 items-center" >
+            <div  >
+              <div class="p-3 rounded-full shadow-lg shadow-amber-500 text-white bg-amber-400">
+                <i data-lucide="tag" ></i>
+              </div>
+            </div>
+            <h2 class="text-2xl" >Exclusive deals and discounts
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="flex  justify-center " >
+        <img src='/static/images/phone.png' alt="burger.png" class="w-[18rem] object-cover ">
+        {% comment %} <div class="overflow-hidden float-left" >
+        </div> {% endcomment %}
+      </div>
+    </div>
+    {% for showcase in food_showcase %}
+      <div class="flex justify-center mt-20 " >
+        <div class="grid grid-cols-2 w-[40rem] gap-4 h-[20rem]" >
+          <div class="overflow-hidden rounded-lg h-[20rem] bg-gray-100 shadow" >
+            <img src={{showcase.image_1.url}} alt="burger.png" class="w-full h-full object-cover "> 
+          </div>
+          <div class="grid gap-2 grid-rows-2 h-[20rem] " >
+            <div class="overflow-hidden rounded-lg bg-gray-100 shadow" >
+              <img src={{showcase.image_2.url}}  alt="burger.png" class="w-full h-full object-cover "> 
+            </div>
+            <div class="overflow-hidden rounded-lg bg-gray-100 shadow" >
+              <img src={{showcase.image_3.url}} alt="burger.png" class="w-full h-full object-cover "> 
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="flex flex-col justify-center items-center mt-20 " >
+      <h1 class="text-4xl font-black " ><i data-lucide="hand-platter" class="scale-150 inline-block mr-5" ></i>Ready to Taste the Difference?</h1>
+      <p class="text-2xl font-extralight mt-5" >Start browsing now and turn hunger into happiness with Tastify.</p>
+      <a href="/">
+        <a href={% url "account_signup" %} class="py-3 px-8 cursor-pointer flex bg-amber-500 rounded-full mt-5" >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+          </svg>
+          Browse Restaurants
+        </a>
+      </a>
+    </div>
+    </div>
+  </main>
+</section>
+{% include "partials/footer.html" %}
+{% endblock %}

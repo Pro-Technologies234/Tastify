@@ -1,0 +1,87 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tastify - Food Ordering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="/static/css/styling.css">
+    <script src="/static/js/script.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="/static/icons/Tastify-icon 32.svg">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.3.0/dist/dotlottie-wc.js" type="module"></script>
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    {% tailwind_css %}
+    {% comment %} <link rel="stylesheet" href="/static/css/style.css"> {% endcomment %}
+    <!-- Bootstrap CSS v5.2.1 -->
+    {% comment %} <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+    /> {% endcomment %}
+  </head>
+  <body class="bg-white dark:bg-neutral-900 antialiased  dark:text-gray-200">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% for message in messages %}
+    <div 
+    x-data="{ show: true }" 
+    x-init="setTimeout(() => show = false, 3000)" 
+    x-show="show"
+    x-transition:enter="transition  ease-out duration-500"
+    x-transition:enter-start=" -translate-y-0"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 -translate-y-10"
+    class="fixed top-5 right-5 grid grid-cols-8 items-center z-10 w-80 p-4 rounded-lg bg-black shadow-lg
+           {% if 'success' in message.tags %} text-green-500 
+           {% elif 'error' in message.tags %} text-red-500 
+           {% else %} text-yellow-500 {% endif %}"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-alert-icon lucide-circle-alert"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+        <h1 class="col-span-7">{{ message }}</h1>
+    </div>
+
+    {% endfor %}
+  {% block content %}
+  
+  <!-- Page-specific content will be injected here -->
+  {% endblock %}
+
+  {% comment %} <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+    // On page load
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      const theme = html.classList.contains('dark') ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+    }
+  </script>
+  {% endcomment %}
+  <script>
+    lucide.createIcons();
+    function openSideBar() {
+      sidebar = document.getElementsByClassName("sidebar")[0];
+      sidebar.style.display = "inline";
+    }
+
+    function closeSideBar() {
+      sidebar = document.getElementsByClassName("sidebar")[0];
+      sidebar.style.display = "none";
+    }
+    
+  </script> 
+</body>
+</html>

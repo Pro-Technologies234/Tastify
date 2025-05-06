@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load math_filter %}
+{% block content %}
+    <section>
+        <div class="w-full h-[100vh] " >
+            <div class="flex flex-col relative w-full h-full justify-center items-center" >
+                <a href={%  url "cart" %} class="absolute top-10 left-20 bg-black text-white rounded-full px-4 p-2" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back
+                </a>
+                <div class=" flex w-100 h-full  flex-col gap-5 justify-between p-3 pb-8 " >
+                    <div class="bg-gray-100   rounded-2xl h-full p-3" >
+                        <h2>ITEMS {{ total_cart_item }}</h2>
+                        <div class="grid grid-cols-2" >
+                            {% for item in cart_items %}
+                            <div>
+                                <p>{{item.quantity}} x {{ item.fooditems.name }}</p>
+                            </div>
+                            <div>
+                                <p class=" text-right text-xl text-amber-900" >₦{{item.fooditems.price|multiply:item.quantity}}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-2" >
+                        <div class="bg-gray-100    rounded-2xl h-auto p-3" >
+                            <h2>ITEMS {{ total_cart_item }}</h2>
+                            <div class="grid grid-cols-2" >
+                                <div>
+                                    <p>Delivery Fee</p>
+                                </div>
+                                <div>
+                                    <p class=" text-right text-xl text-amber-900" >Free Delivery</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2" >
+                                <div>
+                                    <p class="font-bold text-xl"  >Total Amount</p>
+                                </div>
+                                <div>
+                                    <p class=" text-right text-xl text-amber-900" >₦{{total}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form method="post" class="w-full flex flex-col gap-4">
+                            {% csrf_token %}
+                            <div class="bg-gray-100    rounded-2xl h-auto p-3" >
+                                <label for="address" class="block text-lg font-semibold mb-2">Delivery Address</label>
+                                <textarea id="address" name="address" class="w-full resize-none bg-white p-3 border border-gray-300 rounded-md focus:ring-2  dark:bg-neutral-800 dark:text-white" placeholder="Enter your delivery address" ></textarea>
+                            </div>
+                            <button type="submit" class="group overflow-hidden py-6 relative w-full p-3  rounded-full bg-black cursor-pointer transition-colors hover:bg-black text-white" >
+                                <span class="absolute left-0 right-0 top-3 ease-out -translate-x-64 transition-transform group-hover:translate-x-0 text-amber-400" >
+                                    Confirm Order
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </span>
+                                <span class="absolute left-0 right-0 top-3 ease-out translate-x-0 transition-transform group-hover:translate-x-64" >
+                                    Confirm Order
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </span>
+                                {% comment %} <span>
+                                    Confirm Order
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </span> {% endcomment %}
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}

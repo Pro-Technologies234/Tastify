@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load math_filter %}
+{% block content %}
+    <section>
+        <div class="w-full h-[100vh] " >
+            <div class="flex flex-col relative w-full h-full justify-center items-center" >
+                <a href={%  url "cart" %} class="absolute top-10 left-20 bg-black text-white rounded-full px-4 p-2" >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    Back
+                </a>
+                <div class=" flex w-100 h-full  flex-col gap-5 justify-between p-3 pb-8 " >
+                    <div class="bg-gray-100   rounded-2xl h-full p-3" >
+                        <h2 class="text-center text-2xl" >Select Payment Method</h2>
+                        <div class="flex flex-col gap-5 mt-5" >
+                            <a href={% url "place_paystack_order" %}  >
+                                <button class="bg-white border border-gray-300 w-full px-8 p-4 text-2xl flex gap-5  rounded-lg cursor-pointer hover:shadow-lg  shadow-gray-300" >
+                                    <img src="/static/icons/Paystack.png" alt="Flutterwave" width="32" />
+                                    Paystack
+                                </button>
+                                
+                            </a>
+                            <a href={% url "place_flutterwave_order" %}  >
+                                <button class="bg-white border border-gray-300 overflow-hidden w-full px-8 p-4 text-2xl flex gap-5  rounded-lg cursor-pointer hover:shadow-lg  shadow-gray-300" >
+                                    <img src="/static/icons/Flutterwave.png" alt="Flutterwave" width="42" />
+                                    Flutterwave
+                                </button>
+                                
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}

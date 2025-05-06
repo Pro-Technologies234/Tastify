@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <section>
+        <div class="w-full h-[100vh] grid grid-cols-12" >
+            {% include "marketplace/partials/user_sidebar.html" %}
+            <div class="col-span-11" >
+                <div>
+                    {% include "marketplace/partials/user_header.html" %}
+                </div>
+                <div class="px-20 pt-10 h-[87vh] overflow-y-scroll" >
+                    <h1 class="text-4xl font-bold" >Restaurants</h1>
+                    <div class="mt-10" >
+                        <div class="grid grid-cols-3 gap-8" >
+                            {% for restaurant in restaurants %}
+                                <div  class="grid grid-rows-3 gap-2 h-[15rem] " >
+                                    <div class="group row-span-2 w-full overflow-hidden relative rounded-xl shadow border border-gray-200" >
+                                        <h2 class="bg-white z-10 rounded-sm absolute top-4 left-4 p-0.5 px-2 shadow-md font-black" >
+                                            70% off</h2>
+                                        <img src={{restaurant.image.url}} alt="" class="object-cover h-full w-full transition-transform ease-out duration-300 group-hover:scale-125" >
+                                        <a href={% url "restaurant_detail" restaurant.pk %} class="absolute top-0 left-0 right-0 bottom-0  rounded-full p-1 px-3 "></a>
+                                        <a href="" class="text-amber-400 absolute top-4 right-4" >
+                                            <i data-lucide="heart" ></i>
+                                        </a>
+                                    </div>
+                                    <div class="flex justify-between" >
+                                        <div>
+                                            <h1 class="text-2xl font-bold" > {{restaurant.name}} </h1>
+                                            <p class="text-sm italic" > {{restaurant.description}} </p>
+                                        </div>
+                                        <div>
+                                            <h2 class="text-sm" >20 - 30min</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock  %}

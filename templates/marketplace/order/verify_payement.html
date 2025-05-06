@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Display messages (success from payment verification) -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="text-center">
+        <h2 class="text-success mb-4">🎉 Payment Verified!</h2>
+        <p class="lead">Thank you for your purchase. Your payment has been successfully processed.</p>
+        
+        <!-- Order Summary -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Order Summary</h5>
+                <p class="card-text"><strong>Order ID:</strong> {{ order.id }}</p>
+                <p class="card-text"><strong>Total Amount:</strong> ${{ order.total }}</p>
+                <p class="card-text"><strong>Payment Method:</strong> {{ order.payment_method }}</p>
+            </div>
+        </div>
+
+        <a href="{% url 'restaurants_list' %}" class="btn btn-primary mt-3">Continue Shopping</a>
+    </div>
+</div>
+{% endblock %}

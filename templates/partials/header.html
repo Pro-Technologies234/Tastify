@@ -1,0 +1,27 @@
+<header>
+ <section>
+    <nav class="flex justify-between h-[10vh] w-full items-center px-20" >
+        <div>
+            <img src="/static/icons/Tastify 32.svg" alt="logo">
+        </div>
+        <ul class="flex gap-4" >
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Services</a></li>
+            <li><a href="/">About us</a></li>
+            <li><a href="/">Contact</a></li>
+        </ul>
+        <div class="flex gap-4" >
+            <a href={% url "account_login" %}>
+                <button class="border cursor-pointer border-black py-2 rounded-full text-black px-5"> 
+                    Sign in
+                </button>
+            </a>
+            <a href= {% url "account_signup" %} >
+                <button class="border cursor-pointer border-amber-500 bg-amber-500 py-2 rounded-full text-white px-5"> 
+                    Create an account
+                </button>
+            </a>
+        </div>
+    </nav>
+ </section>
+</header>

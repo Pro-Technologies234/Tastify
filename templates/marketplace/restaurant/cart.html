@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load math_filter %}
+{% block content %}
+    <section>
+        <div class="w-full h-[100vh] grid grid-cols-12" >
+            {% include "marketplace/partials/user_sidebar.html" %}
+            <div class="col-span-11 h-full grid-rows-12" >
+                <div>
+                    {% include "marketplace/partials/user_header.html" %}
+                </div>
+                <div class="grid grid-cols-6 h-[90vh] row-span-10" >
+                    <div class="col-span-4  p-8" >
+                        {% comment %} <h1>Cart</h1> {% endcomment %}
+                        <div class="border p-4 border-gray-400 h-[75vh] relative custom-scrollbar overflow-y-auto rounded-xl" >
+                            {% if not cart_item %}
+                                <img src="/static/images/astronaut-grey-scale.png" alt="astro.png" class="w-[50%] absolute top-10 left-50 right-0" >
+                                <h2 class="text-center text-2xl absolute bottom-10 px-32" >You've not added any products yet. When you do, you'll see them here!</h2>
+                            {% endif %}
+                            {% for item in cart_item %}  
+                            <div class='border-b gap-5 border-gray-400 h-32 p-2 grid grid-cols-6' >
+                                <div class="h-full overflow-hidden rounded-lg border border-gray-300" >
+                                    <img src={{item.fooditems.image.url}} alt="" class="object-cover w-full h-full" >
+                                </div>
+                                <div class="col-span-5 grid grid-cols-2 justify-between" >
+                                    <div>
+                                        <h1> {{ item.fooditems.name}} </h1>
+                                        <p class="text-sm" > {{item.fooditems.description}} </p>
+                                        <p>Original Price: ₦{{item.fooditems.price}}</p>
+                                    </div>
+                                    <div class="flex flex-col justify-between items-end" >
+                                        <a href={%url "remove_cart_item" item.id%} class="bg-red-600 text-white p-1 rounded-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2">
+                                                <path d="M3 6h18"/>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                                <line x1="10" x2="10" y1="11" y2="17"/>
+                                                <line x1="14" x2="14" y1="11" y2="17"/>
+                                            </svg>
+                                        </a>
+                                        <h2>Item Price: ₦{{ item.fooditems.price|multiply:item.quantity }}</h2>
+                                        <div class="flex gap-2 bg-black rounded-full p-1 text-white" >
+                                            <a href={% url "minus_quantity" item.id %} class="hover:bg-neutral-900  rounded-full p-1" > 
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>
+                                            </a>
+                                            <h2 class="text-xl text-amber-400" >{{ item.quantity }}</h2>
+                                            <a href={% url "add_quantity" item.id %} class=" hover:bg-neutral-900 rounded-full p-1" > 
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class=" col-span-2 flex flex-col h-[90vh] justify-between  gap-4 p-3 pb-8 " >
+                        <div class="bg-gray-100 rounded-2xl h-full overflow-y-auto custom-scrollbar p-3" >
+                            <h2>ITEMS {{ total_cart_item }}</h2>
+                            <div class="grid grid-cols-2" >
+                                {% for item in cart_item %}
+                                <div>
+                                    <p>{{item.quantity}} x {{ item.fooditems.name }}</p>
+                                </div>
+                                <div>
+                                    <p class=" text-right text-xl text-amber-900" >₦{{item.fooditems.price|multiply:item.quantity}}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2" >
+                            <div class="bg-gray-100 rounded-2xl h-auto p-3" >
+                                <h2>ITEMS {{ total_cart_item }}</h2>
+                                <div class="grid grid-cols-2" >
+                                    <div>
+                                        <p>Delivery Fee</p>
+                                    </div>
+                                    <div>
+                                        <p class=" text-right text-xl text-amber-900" >Free Delivery</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2" >
+                                    <div>
+                                        <p class="font-bold text-xl"  >Total Amount</p>
+                                    </div>
+                                    <div>
+                                        <p class=" text-right text-xl text-amber-900" >₦{{total}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href={% url "payment_method" %}>
+                                <button  class="w-full p-3 cursor-pointer rounded-full bg-black  hover:bg-neutral-900 text-white" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="inline-block" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-truck-icon lucide-truck"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+                                    Order Now
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock  %}

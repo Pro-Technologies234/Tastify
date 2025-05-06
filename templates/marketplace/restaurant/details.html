@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "marketplace/restaurant/review.html" %}
+    <section>
+        <div class="w-full h-[100vh] grid grid-cols-12" >
+            {% include "marketplace/partials/user_sidebar.html" %}
+            <div class="col-span-11 " >
+                <div>
+                    {% include "marketplace/partials/user_header.html" %}
+                </div>
+                <div class="" >
+                    <div class="px-5 pt-10 h-[87vh] col-span-6 overflow-y-scroll" >
+                        <div class="bg-amber-400 overflow-hidden relative  w-full h-50 rounded-2xl mb-10" >
+                            <img src={{restaurants.image.url}} alt="" class="object-cover h-full w-full" >
+                        </div>
+                        <div class="flex gap-4" >
+                            {% for category in categories %}
+                                <button class=" {% if category.name == "Rice Dish" %} bg-amber-400 {% else %} bg-gray-200  {% endif %}  py-2 p-4 cursor-pointer rounded-full" >
+                                    {{category.name}}
+                                </button>
+                            {% endfor %}
+                        </div>
+                        <script>
+                            let category = categories
+                            console.log("This")
+                            function setCategory() {
+                                
+                                
+                            }
+                        </script>
+                        <div class="mt-10" >
+                            <div class="grid grid-cols-3 gap-5" >
+                                {% for food_item in food_items %}
+                                    <div  class="grid grid-rows-4 gap-2 h-[12rem] border  border-gray-300 rounded-lg p-4" >
+                                        <div class="grid grid-cols-5 row-span-3 gap-5" >
+                                            <div class=" col-span-2 overflow-hidden rounded-xl border border-gray-300" >
+                                                <img src={{food_item.image.url}} alt="" class="object-cover h-full w-full transition-transform ease-out duration-300 hover:scale-110" >
+                                            </div>
+                                            <div class="col-span-3" >
+                                                <h2 class="text-xl " > {{food_item.name|truncatechars:15}} </h2>
+                                                <p class="text-sm " > {{food_item.description}} </p>
+                                            </div>
+                                        </div>
+                                        <div class=" flex justify-between ">
+                                            <h2 class="text-xl  font-bold ">
+                                               ₦<span class="text-amber-600" >{{food_item.price}}</span>
+                                            </h2>
+                                            <div  >
+                                                <button onclick="openModal()" class="ml-2 cursor-pointer bg-gray-100 p-2 rounded-full text-black" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square-more-icon lucide-message-square-more"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg>
+                                                </button>
+                                                <a  href={% url "add_to_cart" food_item.id %} class="ml-2 inline-block bg-black p-1 rounded-full text-white" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus-icon lucide-plus"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+    </section>
+{% endblock  %}

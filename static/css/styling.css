@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+body {
+    font-family: var(--font-ubuntu);
+    /* background-color: #121212; */
+}
+
+
+:root {
+    --amber-400: #fbbf24;
+    --amber-500: #f59e0b;
+    --amber-600: #d97706;
+    --font-ubuntu: 'Ubuntu', Arial, Helvetica, sans-serif;
+}
+
+
+#id_login, #id_password, #id_email, #id_name, #id_phonenumber, #id_address, #id_bio, #id_password1 ,#id_password2 {
+    width: 100%;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border: 1px solid black;
+    margin: 5px 0px;
+}
+
+#id_bio {
+    height: 100px;
+    resize: none;
+}
+
+form li {
+    display: none;
+}
+
+
+/* static/css/custom.css */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+/* custom.css */
+
+/* Chrome, Safari */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #f59e0b; /* amber-500 */
+    border-radius: 8px;
+  }
+  
+  /* Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #f59e0b transparent;
+  }
+  
+
+  
